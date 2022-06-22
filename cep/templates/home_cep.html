@@ -1,0 +1,75 @@
+{% extends 'base_cep.html'%}
+{% load static%}
+{% block 'titulo'%}
+Consulta CEP
+{% endblock%}
+
+{% block 'conteudo'%}
+
+{% include 'parciais/_messages.html'%}          
+
+<div class="row py-5">
+    <div class="col-lg-5 py-5 border border-secondary rounded" style="box-shadow: 7px 7px 4px rgb(175, 175, 175);">
+        <h3>Consulta informando o CEP:</h3>
+        <form method="post" name="form_cep" action="{% url 'consulta_cep'%}">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="" class="form-label">Informe o CEP</label>
+              <input type="text" class="form-control" name="cep" placeholder="Informe o CEP" maxlength="8">
+              <small>Informe apenas 8 números, sem pontos, traços ou caracteres especiais</small>
+            </div>
+            <button type="submit" class="btn btn-success">Consultar</button>
+          </form>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-lg-5 py-5 border border-secondary rounded" style="box-shadow: 7px 7px 4px rgb(175, 175, 175);">
+        <h3>Consulta informando o logradouro</h3>
+        <form method="post" name="form_logradouro" action="{% url 'consulta_rua'%}">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="" class="form-label">Selecione a UF</label>
+              <select name="estado" id="" class="form-control">
+                <option value="SC">SC</option>
+                <option value="RS">RS</option>
+                <option value="PR">PR</option>
+                <option value="SP">SP</option>
+                <option value="RJ">RJ</option>
+                <option value="MG">MG</option>
+                <option value="ES">ES</option>
+                <option value="GO">GO</option>
+                <option value="MS">MS</option>
+                <option value="MT">MT</option>
+                <option value="DF">DF</option>
+                <option value="SE">SE</option>
+                <option value="PI">PI</option>
+                <option value="PE">PE</option>
+                <option value="PA">PA</option>
+                <option value="BA">BA</option>
+                <option value="CE">CE</option>
+                <option value="AL">AL</option>
+                <option value="RN">RN</option>
+                <option value="MA">MA</option>
+                <option value="AM">AM</option>
+                <option value="PA">PA</option>
+                <option value="TO">TO</option>
+                <option value="AP">AP</option>
+                <option value="RR">RR</option>
+                <option value="RO">RO</option>
+                <option value="AC">AC</option>
+              </select>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Informe o municipio</label>
+                <input type="text" class="form-control" name="cidade" placeholder="Municipio">
+            </div>
+
+            <div class="mb-3">
+                <label for="" class="form-label">Informe a rua (logradouro)</label>
+                <input type="text" class="form-control" name="rua" placeholder="Rua">
+            </div>
+            <button type="submit" class="btn btn-success">Consultar</button>
+          </form>
+    </div>
+</div>
+
+{% endblock%}

@@ -1,0 +1,39 @@
+{% extends 'base_cep.html'%}
+{% load static%}
+{% block 'titulo'%}
+Resultados da consulta
+{% endblock%}
+
+{% block 'conteudo'%}
+
+{% include 'parciais/_messages.html'%}          
+
+<h1 class="text-center my-5 text-danger">Resultados da consulta pela rua '{{rua}}' na cidade '{{cidade}}' no estado {{estado}}</h1>
+
+<h4 class="text-center">Retornou {{total_ruas}} registros</h4>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">CEP</th>
+      <th scope="col">Logradouro</th>
+      <th scope="col">Bairro</th>
+      <th scope="col">Cidade</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in response%}
+    <tr class="align-middle">
+      <td>{{r.cep}}</td>
+      <td>{{r.logradouro}}</td>
+      <td>{{r.bairro}}</td>
+      <td>{{r.localidade}}</td>
+      <td><a href="{% url 'detalhes' r.cep%}" class="btn btn-info text-light" target="_blank">Mais detalhes</a></td>
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+
+
+
+{% endblock%}

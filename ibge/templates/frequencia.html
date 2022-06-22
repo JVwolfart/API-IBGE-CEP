@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+{% load static%}
+{% block 'titulo'%}
+Recorrencia do nome {{nome}}
+{% endblock%}
+
+{% block 'conteudo'%}
+
+{% include 'parciais/_messages.html'%}          
+
+<h1 class="my-5 text-danger text-center">Recorrencia do nome '{{nome}}'</h1>
+<h3 class="text-center">Entre os anos de 1930 até 2010</h3>
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Período</th>
+        <th scope="col">Frequência</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for f in frequencia %}
+      <tr class="align-middle">
+          <td>{{f.periodo}}</td>
+          <td>{{f.frequencia}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+</table>
+
+{% endblock%}
